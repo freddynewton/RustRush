@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
+using Unity.Netcode;
 
 namespace InfimaGames.LowPolyShooterPack
 {
@@ -149,6 +150,15 @@ namespace InfimaGames.LowPolyShooterPack
 		/// </summary>
 		private bool cursorLocked;
 
+		NetworkVariable<Vector3> currentWalkMovement_nw = new NetworkVariable<Vector3>(Vector3.zero);
+		NetworkVariable<Vector3> currentRunMovement_nw = new NetworkVariable<Vector3>(Vector3.zero);
+
+		NetworkVariable<bool> isMovementPressed_nw = new NetworkVariable<bool>(false);
+		NetworkVariable<bool> isRunPressed_nw = new NetworkVariable<bool>(true);
+
+		NetworkVariable<Vector2> isCharacterRotatePressed_nw = new NetworkVariable<Vector2>(Vector2.zero);
+
+
 		#endregion
 
 		#region CONSTANTS
@@ -255,7 +265,7 @@ namespace InfimaGames.LowPolyShooterPack
 		public override bool IsTutorialTextVisible() => tutorialTextVisible;
 		
 		public override Vector2 GetInputMovement() => axisMovement;
-		public override Vector2 GetInputLook() => axisLook;
+		public override Vector2 GetInputLook() => isCharacterRotatePressed_nw.Value;
 
 		#endregion
 
@@ -776,6 +786,51 @@ namespace InfimaGames.LowPolyShooterPack
 		{
 			//Read.
 			axisMovement = cursorLocked ? context.ReadValue<Vector2>() : default;
+
+			if (IsClient && IsOwner)
+			{
+				OnMovementInputServerRpc(axisMovement, axisMovement, axisMovement != Vector2.zero);
+			}
+
+		}
+
+		/// <summary>
+		/// Server Method when movement buttons are pressed. Sync method
+		/// </summary>
+		/// <param name="_currentWalkMovement">Current walk movement vector</param>
+		/// <param name="_currentRunMovement">Current run movement vector</param>
+		/// <param name="_isMovementPressed">is a movement btn pressed</param>
+		[ServerRpc]
+		public void OnMovementInputServerRpc(Vector3 _currentWalkMovement, Vector3 _currentRunMovement, bool _isMovementPressed)
+		{
+			SetCurrentWalkMovement(_currentWalkMovement);
+			SetCurrentRunMovement(_currentRunMovement);
+			SetIsMovementPressed(_isMovementPressed);
+		}
+
+		Vector3 GetCurrentWalkMovement()
+		{
+			return currentWalkMovement_nw.Value;
+		}
+
+		void SetIsMovementPressed(bool _isMovementPressed)
+		{
+			if (IsServer) isMovementPressed_nw.Value = _isMovementPressed;
+		}
+
+		void SetCurrentWalkMovement(Vector3 _currentWalkMovement)
+		{
+			currentWalkMovement_nw.Value = _currentWalkMovement;
+		}
+
+		void SetCurrentRunMovement(Vector3 _currentRunMovement)
+		{
+			if (IsServer) currentRunMovement_nw.Value = _currentRunMovement;
+		}
+
+		Vector3 GetCurrentRunMovement()
+		{
+			return currentRunMovement_nw.Value;
 		}
 		/// <summary>
 		/// Look.
@@ -784,6 +839,32 @@ namespace InfimaGames.LowPolyShooterPack
 		{
 			//Read.
 			axisLook = cursorLocked ? context.ReadValue<Vector2>() : default;
+
+			if (IsClient && IsOwner)
+			{
+				OnEnableRotationAndMoveCameraInputServerRpc(axisLook);
+			}
+		}
+
+
+		/// <summary>
+		/// Server method for sync of player rotatoion enabled or not (e.g. right mouse btn)
+		/// </summary>
+		/// <param name="_isCharacterRotatePressed">player rotation enabled or not</param>
+		[ServerRpc]
+		void OnEnableRotationAndMoveCameraInputServerRpc(Vector2 _isCharacterRotatePressed)
+		{
+			SetIsCharacterRotatePressed(_isCharacterRotatePressed);
+		}
+
+		Vector2 IsCharacterRotatePressed()
+		{
+			return isCharacterRotatePressed_nw.Value;
+		}
+
+		void SetIsCharacterRotatePressed(Vector2 _isCharacterRotatePressed)
+		{
+			if (IsServer) isCharacterRotatePressed_nw.Value = _isCharacterRotatePressed;
 		}
 
 		/// <summary>

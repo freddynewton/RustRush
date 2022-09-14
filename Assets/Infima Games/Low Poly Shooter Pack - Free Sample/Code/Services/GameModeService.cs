@@ -12,17 +12,17 @@ namespace InfimaGames.LowPolyShooterPack
         /// <summary>
         /// The Player Character.
         /// </summary>
-        private CharacterBehaviour playerCharacter;
+        private Character playerCharacter;
         
         #endregion
         
         #region FUNCTIONS
         
-        public CharacterBehaviour GetPlayerCharacter()
+        public Character GetPlayerCharacter()
         {
             //Make sure we have a player character that is good to go!
             if (playerCharacter == null)
-                playerCharacter = UnityEngine.Object.FindObjectOfType<CharacterBehaviour>();
+                playerCharacter = UnityEngine.Object.FindObjectOfType<Character>();
             
             //Return.
             return playerCharacter;

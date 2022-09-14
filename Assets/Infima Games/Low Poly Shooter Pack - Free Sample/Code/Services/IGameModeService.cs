@@ -10,6 +10,6 @@ namespace InfimaGames.LowPolyShooterPack
         /// <summary>
         /// Returns the Player Character.
         /// </summary>
-        CharacterBehaviour GetPlayerCharacter();
+        Character GetPlayerCharacter();
     }
 }

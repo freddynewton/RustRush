@@ -1,5 +1,4 @@
-﻿// Copyright 2021, Infima Games. All Rights Reserved.
-
+﻿#nullable enable
 using UnityEngine;
 
 namespace InfimaGames.LowPolyShooterPack
