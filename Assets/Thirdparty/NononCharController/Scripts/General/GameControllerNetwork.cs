@@ -4,6 +4,7 @@ using Unity.Netcode;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using InfimaGames.LowPolyShooterPack;
 
 namespace zone.nonon
 {
@@ -290,19 +291,10 @@ namespace zone.nonon
             {
                 if (player.GetComponent<NetworkObject>().IsOwner)
                 {
-                    player.GetComponent<PlayerController>().PortPlayer(GetSpawnPosition(), GetSpawnRotation());
+                    player.GetComponent<Movement>().PortPlayer(GetSpawnPosition(), GetSpawnRotation());
                     break;
                 }
             }
-
-
-        }
-
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }
