@@ -121,9 +121,9 @@ namespace zone.nonon
                     // Initiate the appearing effect
                     playerInstance.GetComponent<NononZoneObjectNetwork>().StartAppearingEffectClientRpc();
                     // set the position on the server
-                    playerInstance.GetComponent<PlayerControllerNetwork>().SetPlayerPos(GetSpawnPosition(), GetSpawnRotation());
+                    playerInstance.GetComponent<Movement>().SetPlayerPos(GetSpawnPosition(), GetSpawnRotation());
                     // set the position on the client
-                    playerInstance.GetComponent<PlayerControllerNetwork>().PortPlayerClientRpc(GetSpawnPosition(), GetSpawnRotation());
+                    playerInstance.GetComponent<Movement>().PortPlayerClientRpc(GetSpawnPosition(), GetSpawnRotation());
                 }
 
             }

@@ -1,5 +1,6 @@
 ﻿// Copyright 2021, Infima Games. All Rights Reserved.
 
+using Unity.Netcode;
 using UnityEngine;
 
 namespace InfimaGames.LowPolyShooterPack.Interface
@@ -7,7 +8,7 @@ namespace InfimaGames.LowPolyShooterPack.Interface
     /// <summary>
     /// Player Interface.
     /// </summary>
-    public class CanvasSpawner : MonoBehaviour
+    public class CanvasSpawner : NetworkBehaviour
     {
         #region FIELDS SERIALIZED
 
@@ -26,8 +27,11 @@ namespace InfimaGames.LowPolyShooterPack.Interface
         /// </summary>
         private void Awake()
         {
-            //Spawn Interface.
-            Instantiate(canvasPrefab);
+            if (IsOwner)
+            {
+                //Spawn Interface.
+                Instantiate(canvasPrefab);
+            }
         }
 
         #endregion
