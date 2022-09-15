@@ -785,10 +785,10 @@ namespace InfimaGames.LowPolyShooterPack
         public void OnMove(InputAction.CallbackContext context)
         {
             //Read.
+            axisMovement = cursorLocked ? context.ReadValue<Vector2>() : default;
 
             if (IsClient && IsOwner)
             {
-                axisMovement = cursorLocked ? context.ReadValue<Vector2>() : default;
                 OnMovementInputServerRpc(axisMovement, axisMovement, axisMovement != Vector2.zero);
             }
 
@@ -808,7 +808,7 @@ namespace InfimaGames.LowPolyShooterPack
             SetIsMovementPressed(_isMovementPressed);
         }
 
-        Vector3 GetCurrentWalkMovement()
+        public Vector3 GetCurrentWalkMovement()
         {
             return currentWalkMovement_nw.Value;
         }
