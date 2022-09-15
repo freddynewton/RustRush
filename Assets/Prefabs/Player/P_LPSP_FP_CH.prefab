@@ -870,6 +870,7 @@ GameObject:
   - component: {fileID: 6219025921223107655}
   - component: {fileID: 448958757}
   - component: {fileID: 434113066}
+  - component: {fileID: 7081871089629601285}
   - component: {fileID: 8163229473432397683}
   - component: {fileID: 4190955791512926966}
   - component: {fileID: 601192529242639950}
@@ -1052,9 +1053,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2751027687307977091}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cedea47162792a74cb9ec77109d20e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 8195332293463410009}
+  cameraWorld: {fileID: 916095938892669238}
+  dampTimeLocomotion: 0.1
+  dampTimeAiming: 0.3
+  characterAnimator: {fileID: 3320314160785962872}
+--- !u!114 &7081871089629601285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2751027687307977091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8de29d9003cc06a409e5de9fa3f99fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 8195332293463410009}
