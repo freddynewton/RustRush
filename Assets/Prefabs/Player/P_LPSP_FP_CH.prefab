@@ -874,11 +874,9 @@ GameObject:
   - component: {fileID: 4190955791512926966}
   - component: {fileID: 601192529242639950}
   - component: {fileID: 7999892636887377833}
-  - component: {fileID: 38495933}
   - component: {fileID: 38495932}
   - component: {fileID: 38495936}
   - component: {fileID: 38495937}
-  - component: {fileID: 5126015825565771322}
   m_Layer: 10
   m_Name: P_LPSP_FP_CH
   m_TagString: Player
@@ -1406,18 +1404,6 @@ MonoBehaviour:
   - {fileID: 4167758453430405102}
   hint: {fileID: 0}
   weightHint: 0
---- !u!114 &38495933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2751027687307977091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d002757767c77774e8bbb2c6c9c958c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &38495932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1459,7 +1445,7 @@ MonoBehaviour:
   RotAngleThreshold: 0.01
   ScaleThreshold: 0.01
   InLocalSpace: 0
-  Interpolate: 0
+  Interpolate: 1
 --- !u!114 &38495937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1472,26 +1458,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5126015825565771322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2751027687307977091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63d2766eb712fc84d9b808d14d3cfec2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectTypes: 
-  max_health: 100
-  attackPower: 200
-  defence: 500
-  regenerationAmountPerTick: 10
-  regenerationRateInSec: 1
-  bounty: 200
-  nononZoneObjectName: 
 --- !u!1 &2906013363015915789
 GameObject:
   m_ObjectHideFlags: 0
@@ -2874,6 +2840,7 @@ GameObject:
   - component: {fileID: 3681108526964167273}
   - component: {fileID: 6408767160419437801}
   - component: {fileID: 6958439319988969168}
+  - component: {fileID: 117573740589303066}
   m_Layer: 9
   m_Name: Camera Depth
   m_TagString: Untagged
@@ -2999,6 +2966,18 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &117573740589303066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6940384052277386700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7b07a79985a2346a7643e2be74caa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7072237473395643110
 GameObject:
   m_ObjectHideFlags: 0
@@ -5401,6 +5380,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480563158121336329, guid: 9482e0a2ae6a92742bbe72e00f29f763,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2485127304103897978, guid: 9482e0a2ae6a92742bbe72e00f29f763,
         type: 3}

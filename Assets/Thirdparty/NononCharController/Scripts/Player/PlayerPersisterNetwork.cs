@@ -31,10 +31,6 @@ namespace zone.nonon
             PlayerData playerData = JsonUtility.FromJson<PlayerData>(serializedJSON);
             GetComponent<NononZoneObjectNetwork>().SetCurrentHealth(playerData.currentHealth);
             GetComponent<NononZoneObjectNetwork>().SetNononObjectName(playerData.playerName);
-            //GetComponent<PlayerControllerNetwork>().SetCurrentWeapon(playerData.currentWeapon);
-            //GetComponent<PlayerControllerNetwork>().SetMounts(playerData.mountsInBag);
-            //GetComponent<PlayerControllerNetwork>().SetCurrentMount(playerData.currentMount);
-            //GetComponent<PlayerControllerNetwork>().SetWeapons(playerData.weapons);
         }
 
         public string Serialize2JSON()
@@ -43,10 +39,6 @@ namespace zone.nonon
             PlayerData playerData = new PlayerData();
             playerData.currentHealth = GetComponent<NononZoneObjectNetwork>().GetCurrentHealth();
             playerData.playerName = GetComponent<NononZoneObjectNetwork>().GetNononZoneObjectName();
-            //playerData.currentWeapon = GetComponent<PlayerControllerNetwork>().GetCurrentWeapon();
-            //playerData.mountsInBag = GetComponent<PlayerControllerNetwork>().GetMountsInBag();
-            //playerData.currentMount = GetComponent<PlayerControllerNetwork>().GetCurrentMountIndex();
-            // playerData.weapons = GetComponent<PlayerControllerNetwork>().GetWeaponsSlots();
             return JsonUtility.ToJson(playerData);
         }
 

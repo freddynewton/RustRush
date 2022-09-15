@@ -111,7 +111,7 @@ namespace zone.nonon
                 {
                     Transform playerInstance = Instantiate(playerPrefab);
 
-                    playerInstance.GetComponent<NononZoneObjectNetwork>().SetNononObjectName(playerName);
+                    //playerInstance.GetComponent<NononZoneObjectNetwork>().SetNononObjectName(playerName);
                     // Restore the values which are persisted for the Player
                     NononZonePersister.Instance.RestoreValuesOnTransformFromJson(playerInstance, playerName);
                     // Spawn the player
@@ -119,7 +119,7 @@ namespace zone.nonon
                     // Add the weapons again to the character on the server
                     //playerInstance.GetComponent<PlayerControllerNetwork>().InitializeWeaponSlotsAndSpawnWeapons();
                     // Initiate the appearing effect
-                    playerInstance.GetComponent<NononZoneObjectNetwork>().StartAppearingEffectClientRpc();
+                    //playerInstance.GetComponent<NononZoneObjectNetwork>().StartAppearingEffectClientRpc();
                     // set the position on the server
                     playerInstance.GetComponent<Movement>().SetPlayerPos(GetSpawnPosition(), GetSpawnRotation());
                     // set the position on the client

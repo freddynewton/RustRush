@@ -5,20 +5,24 @@ using UnityEngine;
 
 public class NetworkCameraHandler : NetworkBehaviour
 {
+    AudioListener listener;
+    Camera camera;
+
     void Start()
     {
-        Debug.Log(IsOwner);
+        camera = GetComponent<Camera>();
+        listener = GetComponent<AudioListener>();
 
         // if netowrking is active, deactivate Audio Listener and Camera for non Owner Objects
         if (IsOwner)
         {
-            GetComponent<AudioListener>().enabled = true;
-            GetComponent<Camera>().enabled = true;
+            if (camera) camera.enabled = true;
+            if (listener) listener.enabled = true;
         }
         else
         {
-            GetComponent<AudioListener>().enabled = false;
-            GetComponent<Camera>().enabled = false;
+            if (camera) camera.enabled = false;
+            if (listener) listener.enabled = false;
         }
     }
 }
